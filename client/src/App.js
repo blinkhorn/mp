@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PrivateRoute from './components/routing/PrivateRoute';
 import Navbar from './components/layout/Navbar.js';
 import Landing from './components/layout/Landing';
-
+import Login from './components/auth/Login';
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
