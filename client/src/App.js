@@ -9,6 +9,7 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Alert from './components/layout/Alert';
 import Dashboard from './components/dashboard/Dashboard';
+import Memories from './components/memories/Memories';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -47,6 +48,11 @@ const App = () => {
                                 exact
                                 path="/dashboard"
                                 component={Dashboard}
+                            />
+                            <PrivateRoute
+                                exact
+                                path="/memories"
+                                component={Memories}
                             />
                         </Switch>
                     </section>
