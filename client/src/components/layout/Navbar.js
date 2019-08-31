@@ -13,6 +13,11 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
                 </Link>
             </li>
             <li>
+                <Link to="/memories">
+                    Memories
+                </Link>
+            </li>
+            <li>
                 <a onClick={logout} href="#!">
                    Logout
                 </a>
