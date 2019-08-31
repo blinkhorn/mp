@@ -131,7 +131,7 @@ router.post(
             const newImage = {
                 memory: req.body.memory,
                 name: user.name,
-                image: req.body.imageURL,
+                imageURL: req.body.imageURL,
                 user: req.user.id
             };
 
@@ -154,16 +154,15 @@ router.delete('/image/:id/:image_id', auth, async (req, res) => {
     try {
         const memory = await Memory.findById(req.params.id);
 
-        // pull out comment
+        // pull out image
         const image = memory.images.find(
             image => image.id === req.params.image_id
         );
 
-        // make sure comment exists
+        // make sure image exists
         if (!image) {
             return res.status(404).json({ msg: 'Image does not exits' });
         }
-
         // check user
         if (image.user.toString() !== req.user.id) {
             return res.status(401).json({ msg: 'User not authorized' });
@@ -171,8 +170,8 @@ router.delete('/image/:id/:image_id', auth, async (req, res) => {
 
         // Get remove index
         const removeIndex = memory.images
-            .map(image => image.user.toString())
-            .indexOf(req.user.id);
+            .map(image => image.id)
+            .indexOf(req.params.image_id);
 
         memory.images.splice(removeIndex, 1);
 

@@ -12,6 +12,10 @@ const MemorySchema = new Schema({
     },
     images: [
         {
+            user: {
+                type: Schema.Types.ObjectId,
+                ref: 'users'
+            },
             memory: {
                 type: String,
                 required: true
