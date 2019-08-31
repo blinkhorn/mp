@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import MemoryItem from './MemoryItem';
 import { getMemories } from '../../actions/memory';
 
 const Memories = ({ getMemories, memory: { memories, loading } }) => {
@@ -8,7 +9,19 @@ const Memories = ({ getMemories, memory: { memories, loading } }) => {
         getMemories();
     }, [getMemories]);
 
-    return <div></div>;
+    return loading ? (
+        <div></div>
+    ) : (
+        <Fragment>
+            <h1>Memories</h1>
+            <p>Welcome to MP!</p>
+            <div>
+                {memories.map(memory => (
+                    <MemoryItem key={memory._id} memory={memory} />
+                ))}
+            </div>
+        </Fragment>
+    );
 };
 
 Memories.propTypes = {
