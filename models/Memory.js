@@ -10,7 +10,7 @@ const MemorySchema = new Schema({
         type: String,
         required: true
     },
-    memories: [
+    images: [
         {
             memory: {
                 type: String,
@@ -19,6 +19,9 @@ const MemorySchema = new Schema({
             imageURL: {
                 type: String,
                 required: true
+            },
+            name: {
+                type: String
             },
             date: {
                 type: Date,
