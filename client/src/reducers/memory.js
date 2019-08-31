@@ -1,4 +1,4 @@
-import { GET_MEMORIES, MEMORY_ERROR } from '../actions/';
+import { GET_MEMORIES, MEMORY_ERROR } from '../actions/types';
 
 const initialState = {
     memories: [],
