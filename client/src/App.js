@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // components
 import PrivateRoute from './components/routing/PrivateRoute';
+import Navbar from './components/layout/Navbar.js';
+import Landing from './components/layout/Landing';
 
 // Redux
 import { Provider } from 'react-redux';
