@@ -4,30 +4,47 @@ import { connect } from 'react-redux';
 import { addImage } from '../../actions/memory';
 
 const ImageForm = ({ memoryId, addImage }) => {
-    const [memory, setMemory] = useState('');
+    const [formData, setFormData] = useState({
+        memory: '',
+        imageURL: ''
+    });
+
+    const { memory, imageURL } = formData;
+
+    const onChange = e =>
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    const onSubmit = async e => {
+        e.preventDefault();
+        addImage( memoryId, {memory, imageURL} );
+    };
 
     return (
         <div>
             <div>
-                <h3>Leave an Image for a Memory</h3>
+                <h3>Enter an Image to Associate with a Memory</h3>
             </div>
-            <form
-                onSubmit={e => {
-                    e.preventDefault();
-                    addImage(memoryId, { memory });
-                    setMemory('');
-                }}
-            >
+            <form onSubmit={e => onSubmit(e)}>
                 <textarea
                     name="memory"
                     cols="30"
                     rows="5"
                     placeholder="Create a memory"
                     value={memory}
-                    onChange={e => setMemory(e.target.value)}
+                    onChange={e => onChange(e)}
                     required
                 />
-                <input type="submit" value="Submit" />
+                <input
+                    type="text"
+                    placeholder="Image URL"
+                    name="imageURL"
+                    value={imageURL}
+                    onChange={e => onChange(e)}
+                    required
+                >
+                </input>
+
+                <input type="submit" value="ImageForm" />
             </form>
         </div>
     );
