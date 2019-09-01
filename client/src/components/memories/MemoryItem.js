@@ -24,10 +24,14 @@ const MemoryItem = ({
                         {images.length > 0 && <span>{images.length}</span>}
                     </Link>
                     {!auth.loading && user === auth.user._id && (
-                        <button
-                            onClick={() => deleteMemory(_id)}
-                            type="button"
-                        ></button>
+                        <div>
+                            <button
+                                onClick={() => deleteMemory(_id)}
+                                type="button"
+                            >
+                                Delete Memory
+                            </button>
+                        </div>
                     )}
                 </Fragment>
             )}

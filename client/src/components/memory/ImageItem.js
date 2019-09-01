@@ -13,7 +13,7 @@ const ImageItem = ({
   <div>
     <div>
       <p>{memory}</p>
-      <img src={imageURL}></img>
+      <img src={imageURL} alt={`An association for ${memory}`}></img>
 
       <p>
         Created by {name} on <Moment format='YYYY/MM/DD'>{date}</Moment>
@@ -22,7 +22,7 @@ const ImageItem = ({
         <button
           onClick={() => deleteImage(memoryId, _id)}
           type='button'
-        >Delete Memory
+        >Delete Image
         </button>
       )}
     </div>
