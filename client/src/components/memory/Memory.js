@@ -10,7 +10,7 @@ import { getMemory } from '../../actions/memory';
 const Memory = ({ getMemory, memory: { memory, loading }, match }) => {
   useEffect(() => {
     getMemory(match.params.id);
-  }, [getMemory]);
+  }, [getMemory, match]);
 
   return loading || memory === null ? (
     <div />

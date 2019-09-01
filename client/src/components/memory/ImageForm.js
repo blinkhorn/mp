@@ -16,7 +16,7 @@ const ImageForm = ({ memoryId, addImage }) => {
 
     const onSubmit = async e => {
         e.preventDefault();
-        addImage( memoryId, {memory, imageURL} );
+        addImage(memoryId, { memory, imageURL });
     };
 
     return (
@@ -25,26 +25,29 @@ const ImageForm = ({ memoryId, addImage }) => {
                 <h3>Enter an Image to Associate with a Memory</h3>
             </div>
             <form onSubmit={e => onSubmit(e)}>
-                <textarea
-                    name="memory"
-                    cols="30"
-                    rows="5"
-                    placeholder="Create a memory"
-                    value={memory}
-                    onChange={e => onChange(e)}
-                    required
-                />
-                <input
-                    type="text"
-                    placeholder="Image URL"
-                    name="imageURL"
-                    value={imageURL}
-                    onChange={e => onChange(e)}
-                    required
-                >
-                </input>
+                <div>
+                    <textarea
+                        name="memory"
+                        cols="30"
+                        rows="5"
+                        placeholder="Create a memory"
+                        value={memory}
+                        onChange={e => onChange(e)}
+                        required
+                    />
+                </div>
+                <div>
+                    <input
+                        type="text"
+                        placeholder="Image URL"
+                        name="imageURL"
+                        value={imageURL}
+                        onChange={e => onChange(e)}
+                        required
+                    ></input>
+                </div>
 
-                <input type="submit" value="ImageForm" />
+                <input type="submit" value="Submit" />
             </form>
         </div>
     );
