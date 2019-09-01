@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
@@ -14,14 +13,16 @@ const ImageItem = ({
   <div>
     <div>
       <p>{memory}</p>
+      <img src={imageURL}></img>
+
       <p>
-        Created on <Moment format='YYYY/MM/DD'>{date}</Moment>
+        Created by {name} on <Moment format='YYYY/MM/DD'>{date}</Moment>
       </p>
       {!auth.loading && user === auth.user._id && (
         <button
           onClick={() => deleteImage(memoryId, _id)}
           type='button'
-        >
+        >Delete Memory
         </button>
       )}
     </div>
