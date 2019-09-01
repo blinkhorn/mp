@@ -12,17 +12,21 @@ const MemoryItem = ({
 }) => (
     <div>
         <div>
-            <p>{topic}</p>
-            <p>
-                Created on <Moment format="YYYY/MM/DD">{date}</Moment>
-            </p>
+            {!auth.loading && user === auth.user._id && <h3>{topic}</h3>}
+            {!auth.loading && user === auth.user._id && (
+                <p>
+                    Created on <Moment format="YYYY/MM/DD">{date}</Moment>
+                </p>
+            )}
 
             {showActions && (
                 <Fragment>
-                    <Link to={`/memories/${_id}`}>
-                        Memory Gallery{' '}
-                        {images.length > 0 && <span>{images.length}</span>}
-                    </Link>
+                    {!auth.loading && user === auth.user._id && (
+                        <Link to={`/memories/${_id}`}>
+                            Memory Gallery{' '}
+                            {images.length > 0 && <span>{images.length}</span>}
+                        </Link>
+                    )}
                     {!auth.loading && user === auth.user._id && (
                         <div>
                             <button
