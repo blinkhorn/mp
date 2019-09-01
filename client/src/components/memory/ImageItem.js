@@ -22,7 +22,7 @@ const ImageItem = ({
         <button
           onClick={() => deleteImage(memoryId, _id)}
           type='button'
-        >Delete Memory
+        >Delete Image
         </button>
       )}
     </div>

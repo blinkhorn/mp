@@ -26,13 +26,19 @@ const MemoryForm = ({ addMemory }) => {
                     onChange={e => setTopic(e.target.value)}
                     required
                 />
-                <input
-                    type="submit"
-                    value="Submit"
-                />
+                <div>
+                    <input type="submit" value="Submit" />
+                </div>
             </form>
         </div>
     );
 };
 
-export default MemoryForm;
+MemoryForm.propTypes = {
+    addMemory: PropTypes.func.isRequired
+};
+
+export default connect(
+    null,
+    { addMemory }
+)(MemoryForm);
