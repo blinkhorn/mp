@@ -5,7 +5,7 @@ import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { deleteMemory } from '../../actions/memory';
 
-// Material 
+// Material
 import Button from '@material-ui/core/Button';
 
 const MemoryItem = ({
@@ -16,7 +16,7 @@ const MemoryItem = ({
 }) => (
     <div>
         <div>
-            {!auth.loading && user === auth.user._id && <h3>{topic}</h3>}
+            {!auth.loading && user === auth.user._id && <h2>{topic}</h2>}
             {!auth.loading && user === auth.user._id && (
                 <p>
                     Created on <Moment format="YYYY/MM/DD">{date}</Moment>
@@ -27,7 +27,7 @@ const MemoryItem = ({
                 <Fragment>
                     {!auth.loading && user === auth.user._id && (
                         <Link style={{color: 'black'}} to={`/memories/${_id}`}>
-                            Memory Gallery {' '}
+                            Memory Gallery  {' '}
                             {images.length > 0 && <span>{images.length}</span>}
                         </Link>
                     )}
@@ -36,8 +36,8 @@ const MemoryItem = ({
                             <Button
                                 variant="contained"
                                 color="secondary"
-                                style={{marginTop: '1rem'}}
                                 onClick={() => deleteMemory(_id)}
+                                style={{marginTop: '1rem'}}
                                 type="button"
                             >
                                 Delete Memory
