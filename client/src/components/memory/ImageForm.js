@@ -17,7 +17,7 @@ const ImageForm = ({ memoryId, addImage }) => {
     const onSubmit = async e => {
         e.preventDefault();
         addImage(memoryId, { memory, imageURL });
-        setFormData({memory: '', imageURL: ''})
+        setFormData({memory: '', imageURL: ''});
     };
 
     return (
