@@ -7,6 +7,11 @@ import { deleteMemory } from '../../actions/memory';
 
 // Material
 import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+
+// CSS
+import '../../App.css';
 
 const MemoryItem = ({
     deleteMemory,
@@ -14,30 +19,28 @@ const MemoryItem = ({
     memory: { _id, topic, images, user, date },
     showActions
 }) => (
-    <div>
-        <div>
-            {!auth.loading && user === auth.user._id && <h2>{topic}</h2>}
-            {!auth.loading && user === auth.user._id && (
-                <p>
-                    Created on <Moment format="MM/DD/YYYY">{date}</Moment>
-                </p>
-            )}
+    <Card className="memory-card">
+        <CardContent>
+            <h2>{topic}</h2>
+
+            <p>
+                Created on <Moment format="MM/DD/YYYY">{date}</Moment>
+            </p>
 
             {showActions && (
                 <Fragment>
-                    {!auth.loading && user === auth.user._id && (
-                        <Link style={{color: 'black'}} to={`/memories/${_id}`}>
-                            Memory Gallery  {' '}
-                            {images.length > 0 && <span>{images.length}</span>}
-                        </Link>
-                    )}
+                    <Link style={{ color: 'black' }} to={`/memories/${_id}`}>
+                        Memory Gallery{' '}
+                        {images.length > 0 && <span>{images.length}</span>}
+                    </Link>
+
                     {!auth.loading && user === auth.user._id && (
                         <div>
                             <Button
                                 variant="contained"
                                 color="secondary"
                                 onClick={() => deleteMemory(_id)}
-                                style={{marginTop: '1rem'}}
+                                style={{ marginTop: '1rem' }}
                                 type="button"
                             >
                                 Delete Memory
@@ -46,8 +49,8 @@ const MemoryItem = ({
                     )}
                 </Fragment>
             )}
-        </div>
-    </div>
+        </CardContent>
+    </Card>
 );
 
 MemoryItem.defaultProps = {

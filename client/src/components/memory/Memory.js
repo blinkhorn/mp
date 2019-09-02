@@ -10,6 +10,9 @@ import { getMemory } from '../../actions/memory';
 // Material
 import Button from '@material-ui/core/Button';
 
+// CSS
+import '../../App.css';
+
 const Memory = ({ getMemory, memory: { memory, loading }, match }) => {
     useEffect(() => {
         getMemory(match.params.id);
@@ -27,16 +30,18 @@ const Memory = ({ getMemory, memory: { memory, loading }, match }) => {
                     Back To Memories
                 </Link>
             </Button>
-            <MemoryItem memory={memory} showActions={false} />
-            <ImageForm memoryId={memory._id} />
-            <div style={{ marginTop: '3rem' }}>
-                {memory.images.map(image => (
-                    <ImageItem
-                        key={image._id}
-                        image={image}
-                        memoryId={memory._id}
-                    />
-                ))}
+            <div className="memory-container">
+                <MemoryItem memory={memory} showActions={false} />
+                <ImageForm memoryId={memory._id} />
+                <div style={{ marginTop: '4rem' }}>
+                    {memory.images.map(image => (
+                        <ImageItem
+                            key={image._id}
+                            image={image}
+                            memoryId={memory._id}
+                        />
+                    ))}
+                </div>
             </div>
         </Fragment>
     );
