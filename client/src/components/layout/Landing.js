@@ -33,7 +33,7 @@ const Landing = ({ isAuthenticated }) => {
                 <div className={classes.landingWrapper}>
                     <h1>Memory Palace | A Memorization Aid</h1>
                     <p>
-                        Associate images from spaces you're familiar with with
+                        Associate images from familiar spaces with
                         infomration you want to memorize!
                     </p>
                     <div>
