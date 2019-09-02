@@ -1,13 +1,16 @@
 const express = require('express');
-const connectDB = require('./config/db')
+const connectDB = require('./config/db');
+const path = require('path');
 
 const app = express();
+
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 // connect database
 connectDB();
 
 // Init middleware
-app.use(express.json({ extended: false }))
+app.use(express.json({ extended: false }));
 
 app.get('/', (req, res) => res.send('API Running'));
 
