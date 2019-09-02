@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addImage } from '../../actions/memory';
 
+// Material
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+
 const ImageForm = ({ memoryId, addImage }) => {
     const [formData, setFormData] = useState({
         memory: '',
@@ -17,7 +21,7 @@ const ImageForm = ({ memoryId, addImage }) => {
     const onSubmit = async e => {
         e.preventDefault();
         addImage(memoryId, { memory, imageURL });
-        setFormData({memory: '', imageURL: ''});
+        setFormData({ memory: '', imageURL: '' });
     };
 
     return (
@@ -27,28 +31,37 @@ const ImageForm = ({ memoryId, addImage }) => {
             </div>
             <form onSubmit={e => onSubmit(e)}>
                 <div>
-                    <textarea
+                    <TextField
                         name="memory"
-                        cols="30"
-                        rows="5"
-                        placeholder="Create a memory"
                         value={memory}
+                        multiline
+                        rows="5"
+                        label="Remember me ..."
+                        margin="normal"
+                        variant="outlined"
                         onChange={e => onChange(e)}
                         required
                     />
                 </div>
                 <div>
-                    <input
-                        type="text"
-                        placeholder="Image URL"
+                    <TextField
+                        label="Image URL"
                         name="imageURL"
                         value={imageURL}
                         onChange={e => onChange(e)}
+                        margin="normal"
                         required
-                    ></input>
+                    />
                 </div>
 
-                <input type="submit" value="Submit" />
+                <Button
+                    variant="contained"
+                    color="primary"
+                    style={{ marginTop: '1rem' }}
+                    type="submit"
+                >
+                    Submit
+                </Button>
             </form>
         </div>
     );

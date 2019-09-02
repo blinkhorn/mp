@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 
 // Material Imports
 import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
     actionButton: {
@@ -87,7 +88,14 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                         minLength="6"
                     />
                 </div>
-                <input type="submit" value="Register" />
+                <Button
+                    variant="contained"
+                    color="primary"
+                    style={{ marginTop: '1rem' }}
+                    type="submit"
+                >
+                    Register
+                </Button>
             </form>
             <p>
                 Already have an account? <Link className={classes.actionButton} to="/login">Sign In</Link>

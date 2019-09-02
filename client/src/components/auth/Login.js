@@ -6,6 +6,7 @@ import { login } from '../../actions/auth';
 
 // Material Imports
 import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
     actionButton: {
@@ -59,10 +60,20 @@ const Login = ({ login, isAuthenticated }) => {
                         minLength="6"
                     />
                 </div>
-                <input type="submit" value="Login" />
+                <Button
+                    variant="contained"
+                    color="primary"
+                    style={{ marginTop: '1rem' }}
+                    type="submit"
+                >
+                    Login
+                </Button>
             </form>
             <p>
-                Don't have an account? <Link className={classes.actionButton} to="/register">Sign Up</Link>
+                Don't have an account?{' '}
+                <Link className={classes.actionButton} to="/register">
+                    Sign Up
+                </Link>
             </p>
         </Fragment>
     );

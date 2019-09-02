@@ -19,15 +19,17 @@ const Memory = ({ getMemory, memory: { memory, loading }, match }) => {
         <div />
     ) : (
         <Fragment>
-            <Button
-                variant="contained"
-                style={{ marginTop: '1rem' }}
-            >
-                <Link style={{ color: 'black', textDecoration: 'none' }} to="/memories">Back To Memories</Link>
+            <Button variant="contained" style={{ marginTop: '1rem' }}>
+                <Link
+                    style={{ color: 'black', textDecoration: 'none' }}
+                    to="/memories"
+                >
+                    Back To Memories
+                </Link>
             </Button>
             <MemoryItem memory={memory} showActions={false} />
             <ImageForm memoryId={memory._id} />
-            <div>
+            <div style={{ marginTop: '3rem' }}>
                 {memory.images.map(image => (
                     <ImageItem
                         key={image._id}

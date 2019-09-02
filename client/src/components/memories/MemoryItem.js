@@ -19,7 +19,7 @@ const MemoryItem = ({
             {!auth.loading && user === auth.user._id && <h2>{topic}</h2>}
             {!auth.loading && user === auth.user._id && (
                 <p>
-                    Created on <Moment format="YYYY/MM/DD">{date}</Moment>
+                    Created on <Moment format="MM/DD/YYYY">{date}</Moment>
                 </p>
             )}
 

@@ -5,6 +5,7 @@ import { addMemory } from '../../actions/memory';
 
 // Material
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 const MemoryForm = ({ addMemory }) => {
     const [topic, setTopic] = useState('');
@@ -20,17 +21,24 @@ const MemoryForm = ({ addMemory }) => {
                     setTopic('');
                 }}
             >
-                <textarea
+                <TextField
                     name="topic"
-                    cols="30"
-                    rows="5"
-                    placeholder="Create a memory"
                     value={topic}
+                    multiline
+                    rows="5"
+                    label="Create a memory"
+                    margin="normal"
+                    variant="outlined"
                     onChange={e => setTopic(e.target.value)}
                     required
                 />
                 <div>
-                    <Button variant="contained" color="primary" style={{marginTop: '0.5rem'}} type="submit">
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        style={{ marginTop: '0.5rem' }}
+                        type="submit"
+                    >
                         Submit
                     </Button>
                 </div>
