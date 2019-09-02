@@ -5,7 +5,18 @@ import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
+// Material Imports
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+    actionButton: {
+        color: 'black'
+    }
+});
+
 const Register = ({ setAlert, register, isAuthenticated }) => {
+    const classes = useStyles();
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -28,15 +39,13 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     };
 
     if (isAuthenticated) {
-        return <Redirect to="/dashboard" />
+        return <Redirect to="/dashboard" />;
     }
-    
+
     return (
         <Fragment>
             <h1>Sign Up</h1>
-            <p>
-                Create Your Account
-            </p>
+            <p>Create Your Account</p>
             <form onSubmit={e => onSubmit(e)}>
                 <div>
                     <input
@@ -78,13 +87,10 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                         minLength="6"
                     />
                 </div>
-                <input
-                    type="submit"
-                    value="Register"
-                />
+                <input type="submit" value="Register" />
             </form>
             <p>
-                Already have an account? <Link to="/login">Sign In</Link>
+                Already have an account? <Link className={classes.actionButton} to="/login">Sign In</Link>
             </p>
         </Fragment>
     );
@@ -94,7 +100,6 @@ Register.propTypes = {
     register: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool
 };
-
 
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated
