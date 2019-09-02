@@ -4,43 +4,53 @@ import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { deleteMemory } from '../../actions/memory';
+
+// Material
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+
+// CSS
+import '../../App.css';
+
 const MemoryItem = ({
     deleteMemory,
     auth,
     memory: { _id, topic, images, user, date },
     showActions
 }) => (
-    <div>
-        <div>
-            {!auth.loading && user === auth.user._id && <h3>{topic}</h3>}
-            {!auth.loading && user === auth.user._id && (
-                <p>
-                    Created on <Moment format="YYYY/MM/DD">{date}</Moment>
-                </p>
-            )}
+    <Card className="memory-card">
+        <CardContent>
+            <h2>{topic}</h2>
+
+            <p>
+                Created on <Moment format="MM/DD/YYYY">{date}</Moment>
+            </p>
 
             {showActions && (
                 <Fragment>
-                    {!auth.loading && user === auth.user._id && (
-                        <Link to={`/memories/${_id}`}>
-                            Memory Gallery{' '}
-                            {images.length > 0 && <span>{images.length}</span>}
-                        </Link>
-                    )}
+                    <Link style={{ color: 'black' }} to={`/memories/${_id}`}>
+                        Memory Gallery{' '}
+                        {images.length > 0 && <span>{images.length}</span>}
+                    </Link>
+
                     {!auth.loading && user === auth.user._id && (
                         <div>
-                            <button
+                            <Button
+                                variant="contained"
+                                color="secondary"
                                 onClick={() => deleteMemory(_id)}
+                                style={{ marginTop: '1rem' }}
                                 type="button"
                             >
                                 Delete Memory
-                            </button>
+                            </Button>
                         </div>
                     )}
                 </Fragment>
             )}
-        </div>
-    </div>
+        </CardContent>
+    </Card>
 );
 
 MemoryItem.defaultProps = {

@@ -4,7 +4,20 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
 
+// Material Imports
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+
+const useStyles = makeStyles({
+    actionButton: {
+        color: 'black'
+    }
+});
+
 const Login = ({ login, isAuthenticated }) => {
+    const classes = useStyles();
+
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -29,29 +42,41 @@ const Login = ({ login, isAuthenticated }) => {
             <p>Sign Into Your Account</p>
             <form onSubmit={e => onSubmit(e)}>
                 <div>
-                    <input
+                    <TextField
                         type="email"
-                        placeholder="Email Address"
+                        label="Email Address"
                         name="email"
                         value={email}
                         onChange={e => onChange(e)}
+                        margin="normal"
                         required
                     />
                 </div>
                 <div>
-                    <input
+                     <TextField
                         type="password"
-                        placeholder="Password"
+                        label="Password"
                         name="password"
                         value={password}
                         onChange={e => onChange(e)}
+                        margin="normal"
                         minLength="6"
                     />
                 </div>
-                <input type="submit" value="Login" />
+                <Button
+                    variant="contained"
+                    color="primary"
+                    style={{ marginTop: '1rem' }}
+                    type="submit"
+                >
+                    Login
+                </Button>
             </form>
             <p>
-                Don't have an account? <Link to="/register">Sign Up</Link>
+                Don't have an account?{' '}
+                <Link className={classes.actionButton} to="/register">
+                    Sign Up
+                </Link>
             </p>
         </Fragment>
     );

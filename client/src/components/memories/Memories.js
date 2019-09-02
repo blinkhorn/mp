@@ -5,6 +5,9 @@ import MemoryItem from './MemoryItem';
 import MemoryForm from './MemoryForm';
 import { getMemories } from '../../actions/memory';
 
+// CSS
+import '../../App.css';
+
 const Memories = ({ getMemories, memory: { memories, loading } }) => {
     useEffect(() => {
         getMemories();
@@ -16,8 +19,8 @@ const Memories = ({ getMemories, memory: { memories, loading } }) => {
         <Fragment>
             <h1>Memories</h1>
             <p>Welcome to MP!</p>
-            <MemoryForm />
-            <div>
+            <div className="memory-container">
+                <MemoryForm />
                 {memories.map(memory => (
                     <MemoryItem key={memory._id} memory={memory} />
                 ))}

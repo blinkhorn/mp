@@ -5,7 +5,20 @@ import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
+// Material Imports
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+
+const useStyles = makeStyles({
+    actionButton: {
+        color: 'black'
+    }
+});
+
 const Register = ({ setAlert, register, isAuthenticated }) => {
+    const classes = useStyles();
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -28,63 +41,72 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     };
 
     if (isAuthenticated) {
-        return <Redirect to="/dashboard" />
+        return <Redirect to="/dashboard" />;
     }
-    
+
     return (
         <Fragment>
             <h1>Sign Up</h1>
-            <p>
-                Create Your Account
-            </p>
+            <p>Create Your Account</p>
             <form onSubmit={e => onSubmit(e)}>
                 <div>
-                    <input
+                    <TextField
                         type="text"
-                        placeholder="Name"
+                        label="Name"
                         name="name"
                         value={name}
                         onChange={e => onChange(e)}
+                        margin="normal"
                         required
                     />
                 </div>
                 <div>
-                    <input
+                    <TextField
                         type="email"
-                        placeholder="Email Address"
+                        label="Email Address"
                         name="email"
                         value={email}
                         onChange={e => onChange(e)}
+                        margin="normal"
                         required
                     />
                 </div>
                 <div>
-                    <input
+                    <TextField
                         type="password"
-                        placeholder="Password"
+                        label="Password"
                         name="password"
                         value={password}
                         onChange={e => onChange(e)}
+                        margin="normal"
                         minLength="6"
                     />
                 </div>
                 <div>
-                    <input
+                    <TextField
                         type="password"
-                        placeholder="Confirm Password"
+                        label="Confirm Password"
                         name="password2"
                         value={password2}
                         onChange={e => onChange(e)}
+                        margin="normal"
                         minLength="6"
                     />
                 </div>
-                <input
+                <Button
+                    variant="contained"
+                    color="primary"
+                    style={{ marginTop: '1rem' }}
                     type="submit"
-                    value="Register"
-                />
+                >
+                    Register
+                </Button>
             </form>
             <p>
-                Already have an account? <Link to="/login">Sign In</Link>
+                Already have an account?{' '}
+                <Link className={classes.actionButton} to="/login">
+                    Sign In
+                </Link>
             </p>
         </Fragment>
     );
@@ -94,7 +116,6 @@ Register.propTypes = {
     register: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool
 };
-
 
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated

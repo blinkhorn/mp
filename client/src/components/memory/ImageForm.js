@@ -3,6 +3,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addImage } from '../../actions/memory';
 
+// Material
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+
+// CSS
+import '../../App.css';
+
 const ImageForm = ({ memoryId, addImage }) => {
     const [formData, setFormData] = useState({
         memory: '',
@@ -17,40 +26,51 @@ const ImageForm = ({ memoryId, addImage }) => {
     const onSubmit = async e => {
         e.preventDefault();
         addImage(memoryId, { memory, imageURL });
-        setFormData({memory: '', imageURL: ''})
+        setFormData({ memory: '', imageURL: '' });
     };
 
     return (
-        <div>
-            <div>
-                <h3>Enter an Image to Associate with a Memory</h3>
-            </div>
-            <form onSubmit={e => onSubmit(e)}>
+        <Card className="memory-form-card">
+            <CardContent>
                 <div>
-                    <textarea
-                        name="memory"
-                        cols="30"
-                        rows="5"
-                        placeholder="Create a memory"
-                        value={memory}
-                        onChange={e => onChange(e)}
-                        required
-                    />
+                    <h3>Enter an Image to Associate with a Memory</h3>
                 </div>
-                <div>
-                    <input
-                        type="text"
-                        placeholder="Image URL"
-                        name="imageURL"
-                        value={imageURL}
-                        onChange={e => onChange(e)}
-                        required
-                    ></input>
-                </div>
+                <form onSubmit={e => onSubmit(e)}>
+                    <div>
+                        <TextField
+                            name="memory"
+                            value={memory}
+                            multiline
+                            rows="5"
+                            label="Remember me ..."
+                            margin="normal"
+                            variant="outlined"
+                            onChange={e => onChange(e)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <TextField
+                            label="Image URL"
+                            name="imageURL"
+                            value={imageURL}
+                            onChange={e => onChange(e)}
+                            margin="normal"
+                            required
+                        />
+                    </div>
 
-                <input type="submit" value="Submit" />
-            </form>
-        </div>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        style={{ marginTop: '1rem' }}
+                        type="submit"
+                    >
+                        Submit
+                    </Button>
+                </form>
+            </CardContent>
+        </Card>
     );
 };
 
