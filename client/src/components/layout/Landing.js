@@ -1,32 +1,52 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+// Material imports
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Container from '@material-ui/core/Container';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+    actionButton: {
+        color: 'black',
+        textDecoration: 'none'
+    },
+    landingWrapper: {
+        textAlign: 'center'
+    }
+});
+
 const Landing = ({ isAuthenticated }) => {
+    const classes = useStyles();
+
     if (isAuthenticated) {
-        return <Redirect to="/dashboard" />
+        return <Redirect to="/dashboard" />;
     }
 
     return (
-        <section>
-            <div>
-                <div>
+        <Fragment>
+            <CssBaseline />
+            <Container maxWidth="lg">
+                <div className={classes.landingWrapper}>
                     <h1>Memory Palace | A Memorization Aid</h1>
                     <p>
-                        Associate images from spaces you're familiar with with infomration you want to memorize
+                        Associate images from spaces you're familiar with with
+                        infomration you want to memorize!
                     </p>
                     <div>
-                        <Link to="/register">
-                            Sign Up
-                        </Link>
-                        <Link to="/login">
-                            Login
-                        </Link>
+                        <Button>
+                            <Link className={classes.actionButton} to="/register">Sign Up</Link>
+                        </Button>
+                        <Button>
+                            <Link className={classes.actionButton} to="/login">Login</Link>
+                        </Button>
                     </div>
                 </div>
-            </div>
-        </section>
+            </Container>
+        </Fragment>
     );
 };
 
