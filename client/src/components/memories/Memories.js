@@ -17,7 +17,7 @@ const Memories = ({ getMemories, memory: { memories, loading } }) => {
             <h1>Memories</h1>
             <p>Welcome to MP!</p>
             <MemoryForm />
-            <div>
+            <div style={{marginTop: '3rem'}}>
                 {memories.map(memory => (
                     <MemoryItem key={memory._id} memory={memory} />
                 ))}

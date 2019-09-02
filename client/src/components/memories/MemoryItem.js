@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { deleteMemory } from '../../actions/memory';
+
+// Material 
+import Button from '@material-ui/core/Button';
+
 const MemoryItem = ({
     deleteMemory,
     auth,
@@ -22,19 +26,22 @@ const MemoryItem = ({
             {showActions && (
                 <Fragment>
                     {!auth.loading && user === auth.user._id && (
-                        <Link to={`/memories/${_id}`}>
-                            Memory Gallery{' '}
+                        <Link style={{color: 'black'}} to={`/memories/${_id}`}>
+                            Memory Gallery {' '}
                             {images.length > 0 && <span>{images.length}</span>}
                         </Link>
                     )}
                     {!auth.loading && user === auth.user._id && (
                         <div>
-                            <button
+                            <Button
+                                variant="contained"
+                                color="secondary"
+                                style={{marginTop: '1rem'}}
                                 onClick={() => deleteMemory(_id)}
                                 type="button"
                             >
                                 Delete Memory
-                            </button>
+                            </Button>
                         </div>
                     )}
                 </Fragment>

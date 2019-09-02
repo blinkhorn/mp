@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addMemory } from '../../actions/memory';
 
+// Material
+import Button from '@material-ui/core/Button';
+
 const MemoryForm = ({ addMemory }) => {
     const [topic, setTopic] = useState('');
     return (
@@ -27,7 +30,9 @@ const MemoryForm = ({ addMemory }) => {
                     required
                 />
                 <div>
-                    <input type="submit" value="Submit" />
+                    <Button variant="contained" color="primary" style={{marginTop: '0.5rem'}} type="submit">
+                        Submit
+                    </Button>
                 </div>
             </form>
         </div>
