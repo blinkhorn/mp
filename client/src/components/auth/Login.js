@@ -7,6 +7,7 @@ import { login } from '../../actions/auth';
 // Material Imports
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles({
     actionButton: {
@@ -41,22 +42,24 @@ const Login = ({ login, isAuthenticated }) => {
             <p>Sign Into Your Account</p>
             <form onSubmit={e => onSubmit(e)}>
                 <div>
-                    <input
+                    <TextField
                         type="email"
-                        placeholder="Email Address"
+                        label="Email Address"
                         name="email"
                         value={email}
                         onChange={e => onChange(e)}
+                        margin="normal"
                         required
                     />
                 </div>
                 <div>
-                    <input
+                     <TextField
                         type="password"
-                        placeholder="Password"
+                        label="Password"
                         name="password"
                         value={password}
                         onChange={e => onChange(e)}
+                        margin="normal"
                         minLength="6"
                     />
                 </div>
